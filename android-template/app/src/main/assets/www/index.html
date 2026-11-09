@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>NEXA APK Studio</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #07070d;
+    color: #e8e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+  }
+  .card { max-width: 360px; }
+  .logo {
+    width: 72px; height: 72px; margin: 0 auto 20px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6, #06b6d4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px; font-weight: 700; color: #fff;
+  }
+  h1 { font-size: 22px; margin-bottom: 10px; }
+  p { color: #9a9ab0; font-size: 14px; line-height: 1.6; }
+  .pulse {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #8b5cf6; margin: 24px auto 0;
+    animation: pulse 1.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.8); opacity: 0.4; }
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">N</div>
+    <h1>Tu app está lista</h1>
+    <p>Esta es la página por defecto de NEXA APK Studio. Sube tu contenido web o configura una URL de inicio para reemplazar esta pantalla.</p>
+    <div class="pulse"></div>
+  </div>
+</body>
+</html>
