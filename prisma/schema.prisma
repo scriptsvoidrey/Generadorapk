@@ -1,0 +1,62 @@
+// NEXA APK STUDIO — Prisma schema (congelado).
+// SQLite por defecto (no soporta enums): status/contentType son String,
+// validados por zod en la app. Para producción en Vercel: cambiar provider a
+// "postgresql" y DATABASE_URL a Postgres (Vercel Postgres / Neon).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String?
+  image        String?
+  provider     String   @default("credentials") // "credentials" | "google"
+  preferences  String   @default("{\"theme\":\"dark\",\"accent\":\"#8b5cf6\",\"notifications\":true,\"language\":\"es\",\"sound\":true}") // JSON serializado
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  builds       Build[]
+}
+
+model Build {
+  id            String   @id @default(cuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  appName       String
+  packageName   String
+  versionName   String   @default("1.0.0")
+  versionCode   Int      @default(1)
+  iconPath      String?
+  contentType   String   // "URL" | "HTML_PASTE" | "HTML_FILE" | "ZIP"
+  sourceRef     String   // ruta local / blob key del fuente empaquetado (zip)
+  permissions   String   @default("[]") // JSON array string de permisos Android
+  status        String   @default("QUEUED") // QUEUED|PREPARING|BUILDING|COMPLETED|ERROR
+  errorMessage  String?
+  apkPath       String?
+  apkSize       Int?
+  githubRunId   Int?
+  callbackToken String   @unique
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  events        BuildEvent[]
+
+  @@index([userId, createdAt])
+}
+
+model BuildEvent {
+  id        String   @id @default(cuid())
+  buildId   String
+  build     Build    @relation(fields: [buildId], references: [id], onDelete: Cascade)
+  status    String   // mismo set que Build.status
+  message   String
+  createdAt DateTime @default(now())
+
+  @@index([buildId, createdAt])
+}
