@@ -1,12 +1,47 @@
-node_modules/
-.next/
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
 .env
-.env.local
-*.db
-*.db-journal
-storage/apks/*
-!storage/apks/.gitkeep
-storage/uploads/*
-!storage/uploads/.gitkeep
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# prisma
+prisma/*.db
+prisma/*.db-journal
+
+# storage
+/storage/apks/*
+!/storage/apks/.gitkeep
+/storage/uploads/*
+!/storage/uploads/.gitkeep
+
+# nexa local tools
 .nexa/
-tsconfig.tsbuildinfo
