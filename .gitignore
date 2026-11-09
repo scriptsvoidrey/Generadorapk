@@ -1,0 +1,12 @@
+node_modules/
+.next/
+.env
+.env.local
+*.db
+*.db-journal
+storage/apks/*
+!storage/apks/.gitkeep
+storage/uploads/*
+!storage/uploads/.gitkeep
+.nexa/
+tsconfig.tsbuildinfo
