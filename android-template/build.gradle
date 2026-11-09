@@ -1,0 +1,7 @@
+// Build.gradle a nivel raíz del proyecto NEXA WebView wrapper.
+// El applicationId/version se parametrizan en app/build.gradle por
+// scripts/configure-android.mjs antes de compilar.
+plugins {
+    id 'com.android.application' version '8.5.2' apply false
+    id 'org.jetbrains.kotlin.android' version '1.9.24' apply false
+}
