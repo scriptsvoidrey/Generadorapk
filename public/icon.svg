@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="nexaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="55%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="nexaGradSoft" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.55"/>
+    </linearGradient>
+    <filter id="nexaGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Fondo -->
+  <rect width="512" height="512" rx="112" fill="#07070d"/>
+  <rect width="512" height="512" rx="112" fill="url(#nexaGradSoft)" opacity="0.18"/>
+
+  <!-- Formas geométricas estilizadas: hexágono + rombo interior formando una N abstracta -->
+  <g filter="url(#nexaGlow)" transform="translate(256 220)">
+    <polygon points="-110,-95 110,-95 150,0 110,95 -110,95 -150,0"
+             fill="none" stroke="url(#nexaGrad)" stroke-width="14" stroke-linejoin="round" opacity="0.9"/>
+    <!-- Trazo de N -->
+    <path d="M -55 55 L -55 -55 L 55 55 L 55 -55"
+          fill="none" stroke="url(#nexaGrad)" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Punto de energía -->
+    <circle cx="95" cy="-70" r="14" fill="#06b6d4"/>
+    <circle cx="-95" cy="70" r="10" fill="#8b5cf6"/>
+  </g>
+
+  <!-- Texto NEXA -->
+  <text x="256" y="400" text-anchor="middle"
+        font-family="'Space Grotesk', 'Arial', sans-serif" font-weight="700"
+        font-size="72" letter-spacing="10" fill="url(#nexaGrad)">NEXA</text>
+  <text x="256" y="448" text-anchor="middle"
+        font-family="'Inter', 'Arial', sans-serif" font-weight="600"
+        font-size="26" letter-spacing="14" fill="#9a9ab0">APK STUDIO</text>
+</svg>
